@@ -1,17 +1,22 @@
 project:
   type: website
+  output-dir: docs
 
 website:
-  title: "epistemic-analysis.github.io"
+  title: "Epistemic Analysis Project"
   navbar:
     left:
       - href: index.qmd
-        text: Home
-      - about.qmd
+        text: Introduction
+      - href: blog.qmd
+        text: Blog
+    right:
+      - href: author.qmd
+        text: About Author
 
 format:
   html:
-    theme: cosmo
+    theme: lux
     css: styles.css
     toc: true
 

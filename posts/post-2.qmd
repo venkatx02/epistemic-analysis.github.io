@@ -1,6 +1,7 @@
 ---
 title: "Exploring the Corpus"
 author: "Venkat Dasari"
+date: "2025-02-26"
 format: html
 ---
 
@@ -25,3 +26,9 @@ Credits: <https://philosophydata.com/bibliography.html>
 <img src="../images/readability-scores.png" alt="readability-scores" width="700" style="display: block; margin: auto;"/>
 
 <img src="../images/word-frequency.png" alt="word-frequency" width="800" style="display: block; margin: auto;"/>
+
+<img src="../images/word-cloud.png" alt="word-cloud" width="800" style="display: block; margin: auto;"/>
+
+<img src="../images/bigram-frequency.png" alt="bigram-frequency" width="800" style="display: block; margin: auto;"/>
+
+<img src="../images/trigram-frequency.png" alt="trigram-frequency" width="800" style="display: block; margin: auto;"/>

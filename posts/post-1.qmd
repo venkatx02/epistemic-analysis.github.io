@@ -1,5 +1,33 @@
 ---
-title: "Post-1"
+title: "An Introduction"
+author: "Venkat Dasari"
+format: html
 ---
 
-Post-1 coming soon!
+<b> About me </b>
+
+Hello, and welcome to my first blog post! My name is Venkat, and I’m a graduate student in the Data Analytics and Computational Social Science (DACSS) program at the University of Massachusetts Amherst. With a bachelor’s degree in computer science and some experience in the corporate world, I’ve developed expertise in web application development and machine learning. Now, I have landed into computational social science which combines computer science and data science with social sciences.
+
+My research focuses on methodology rather than being domain-specific. However, I’m passionate about working across diverse domains, as it fuels my curiosity and enhances my adaptability and learning capabilities. Broadly, my interests are in and around information security, philosophy, political psychology, and international affairs. I’m currently working on a few projects in which I study these topics: determinants of voting behavior in India, the characteristics of countries that lead them to engage in wars and their impacts, and epistemic analysis and classification of modern texts.
+
+<b> Research Question </b>
+
+<b> How can language-based models identify rationalism and empiricism in modern texts, such as social media posts? </b>
+
+Rationalism and empiricism are two foundational epistemological traditions that have shaped philosophical thought for centuries. Rationalism emphasizes deductive reasoning and innate ideas, while empiricism focuses on sensory experience and inductive reasoning. My goal is to develop computational models that can detect these epistemological tendencies in contemporary discourse, such as social media posts, where ideas are often expressed in fragmented and evolving language.
+
+Studying this question is essential because understanding an individual's philosophical perspective offers valuable insights into their reasoning patterns, decision-making, and broader worldviews. Rationalism and empiricism represent two foundational approaches to knowledge, shaping arguments in science, politics, business, and everyday discourse. Identifying these epistemological tendencies in modern texts, such as social media posts, enhances our understanding of how people construct arguments, interpret evidence, and engage with information. Such insights could have applications in fields ranging from political analysis, artificial intelligence, business, consumer behavior, education, journalism, and media, helping to refine models of persuasion, belief formation, and knowledge dissemination in the digital age.
+
+<b>The Corpus</b>
+
+To address this research question, an initial corpus has been compiled of texts explicitly discussing rationalism and empiricism. The primary sources for this corpus are books from Project Gutenberg, featuring works by key rationalist philosophers—René Descartes, Baruch Spinoza, and Gottfried Wilhelm Leibniz—as well as empiricists such as John Locke, George Berkeley, and David Hume. However, as linguistic patterns and philosophical discourse have evolved, the corpus will be expanded to include diverse texts from different periods and contexts. PhilPapers, a comprehensive index and bibliography of philosophy, is a potential source for expanding the corpus.
+
+<b>Why This Corpus?</b>
+
+Foundational Clarity: The selected works provide unambiguous examples of rationalist and empiricist thought, offering a solid foundation for training language models.
+
+Historical Breadth: By including texts from different periods, the corpus captures linguistic evolution, making the model more adaptable to modern language patterns.
+
+Diverse Contexts: Expanding the corpus with additional sources ensures a comprehensive representation of epistemological ideas, enhancing the model’s ability to generalize to contemporary texts like social media posts.
+
+Ultimately, this corpus will enable me to analyze linguistic patterns, argument structures, and reasoning styles in texts, paving the way for models that can identify rationalist and empiricist tendencies in modern discourse.

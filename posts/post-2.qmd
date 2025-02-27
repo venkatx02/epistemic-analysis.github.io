@@ -4,6 +4,8 @@ author: "Venkat Dasari"
 format: html
 ---
 
+Let's start by looking at the research question and corpus...
+
 <b> Research Question </b>
 
 <b> How can language-based models identify rationalism and empiricism in modern texts, such as social media posts? </b>
@@ -15,3 +17,5 @@ Studying this question is essential because understanding an individual's philos
 <b>The Corpus</b>
 
 To address this research question, an initial corpus has been compiled of texts explicitly discussing rationalism and empiricism. The primary sources for this corpus are books from Project Gutenberg, featuring works by key rationalist philosophers—René Descartes, Baruch Spinoza, and Gottfried Wilhelm Leibniz—as well as empiricists such as John Locke, George Berkeley, and David Hume. However, as philosophical discourse and linguistic patterns have evolved, the corpus will be expanded to include diverse texts from different periods and contexts. PhilPapers, a comprehensive index and bibliography of philosophy, is a potential source for expanding the corpus.
+
+Credits: <https://philosophydata.com/bibliography.html>

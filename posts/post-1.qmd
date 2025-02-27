@@ -22,6 +22,8 @@ Studying this question is essential because understanding an individual's philos
 
 To address this research question, an initial corpus has been compiled of texts explicitly discussing rationalism and empiricism. The primary sources for this corpus are books from Project Gutenberg, featuring works by key rationalist philosophers—René Descartes, Baruch Spinoza, and Gottfried Wilhelm Leibniz—as well as empiricists such as John Locke, George Berkeley, and David Hume. However, as philosophical discourse and linguistic patterns have evolved, the corpus will be expanded to include diverse texts from different periods and contexts. PhilPapers, a comprehensive index and bibliography of philosophy, is a potential source for expanding the corpus.
 
+Credits: <https://philosophydata.com/bibliography.html>
+
 <b>Why This Corpus?</b>
 
 This corpus provides a clear foundation for distinguishing rationalist and empiricist thought. By analyzing argument structures, linguistic patterns, and reasoning styles in classical texts, language models can be trained to recognize epistemological tendencies in contemporary discourse. The selected works offer clear examples of deductive reasoning and innate ideas in rationalism versus sensory-based, inductive reasoning in empiricism. The structured nature of philosophical writings makes them ideal for computational analysis, allowing for effective training and classification of texts based on their underlying epistemic perspectives. Extending the corpus with evolving interpretations in literature will ensure a more comprehensive model that accounts for linguistic shifts and variations in how rationalist and empiricist ideas are expressed, thereby improving the model’s applicability to modern texts like social media posts.

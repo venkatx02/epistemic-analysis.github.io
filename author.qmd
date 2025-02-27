@@ -4,7 +4,7 @@ title: "About Author"
 
 <img src="images/author-venkat.jpeg" alt="Venkat Dasari" width="200px">
 
-Hi,
+Hello,
 
 My name is Venkat, and I’m a graduate student in the Data Analytics and Computational Social Science (DACSS) program at the University of Massachusetts Amherst. With a bachelor’s degree in computer science and some experience in the corporate world, I’ve developed expertise in web application development and machine learning. Now, I have landed into computational social science which combines computer science and data science with social sciences.
 

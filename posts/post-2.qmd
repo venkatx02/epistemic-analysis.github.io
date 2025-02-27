@@ -22,6 +22,6 @@ Credits: <https://philosophydata.com/bibliography.html>
 
 <img src="../images/corpus-summary.png" width="500" style="display: block; margin: auto;"/>
 
-<img src="../images/readability-scores.png" alt="readability-scores" width="800" style="display: block; margin: auto;"/>
+<img src="../images/readability-scores.png" alt="readability-scores" width="700" style="display: block; margin: auto;"/>
 
 <img src="../images/word-frequency.png" alt="word-frequency" width="800" style="display: block; margin: auto;"/>

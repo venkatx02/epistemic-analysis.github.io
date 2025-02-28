@@ -21,14 +21,42 @@ To address this research question, an initial corpus has been compiled of texts 
 
 Credits: <https://philosophydata.com/bibliography.html>
 
+<b>Corpus Summary</b>
+
+As a starting point, I have collected six books in the empiricism corpus and four books in the rationalism corpus. These are foundational books that discuss empiricism and rationalism, respectively. A summary of the corpora can be found in the image below:
+
 <img src="../images/corpus-summary.png" width="500" style="display: block; margin: auto;"/>
+
+<b>Corpus Readability</b>
 
 <img src="../images/readability-scores.png" alt="readability-scores" width="700" style="display: block; margin: auto;"/>
 
+Generally, a Flesch reading ease score between 60 and 70 and a Flesch-Kincaid grade level of 8 are considered ideal for most content. However, our corpus does not fall into these benchmarks. One perspective is that contemporary language differs significantly from classical philosophical language in terms of word choice, linguistic patterns, and argumentative style. This is a significant gap in the classification of philosophical schools of thought. In this study, I aim to address this gap by incorporating periodically diverse texts into the corpus to enhance classification performance in modern texts.
+
+<b>Initial Cleaning</b>
+
+For now, the corpora have undergone basic preprocessing to examine word patterns. After tokenization, punctuation, numbers, and stopwords were removed. All tokens were converted to lowercase to ensure consistency.
+
+<b>Word Frequency</b>
+
 <img src="../images/word-frequency.png" alt="word-frequency" width="800" style="display: block; margin: auto;"/>
+
+The above bar graphs show the frequency of the top 10 words from both corpora. The word "one" is not only common in the epistemological categories of empiricism and rationalism but is also widely used in classical philosophical texts, regardless of the school of thought, in various contexts. More care should be taken in the preprocessing of texts, particularly in handling these kind of concepts.
+
+<b>Word Cloud</b>
 
 <img src="../images/word-cloud.png" alt="word-cloud" width="800" style="display: block; margin: auto;"/>
 
+The word clouds allow us to examine the top 200 words in both the empiricism and rationalism corpora. So, what can we take away from them?
+
+<b>Bigram Frequency</b>
+
+A bigram is a pair of two consecutive tokens. The bar graphs below allow us to examine the frequency of bigrams in both corpora.
+
 <img src="../images/bigram-frequency.png" alt="bigram-frequency" width="800" style="display: block; margin: auto;"/>
+
+<b>Trigram Frequency</b>
+
+Similar to a bigram, a trigram is a set of three consecutive tokens. Here is the frequency distribution of trigrams in our corpora.
 
 <img src="../images/trigram-frequency.png" alt="trigram-frequency" width="800" style="display: block; margin: auto;"/>

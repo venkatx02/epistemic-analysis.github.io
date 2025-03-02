@@ -3,6 +3,11 @@ title: "Exploring the Corpus"
 author: "Venkat Dasari"
 date: "2025-02-26"
 format: html
+comments: 
+    utterances:
+      repo: quarto-dev/quarto-web
+      theme: github-dark
+      issue-term: title
 ---
 
 Let's start by looking at the research question and corpus...

@@ -3,6 +3,11 @@ title: "An Introduction"
 author: "Venkat Dasari"
 date: "2025-02-12"
 format: html
+comments: 
+    utterances:
+      repo: quarto-dev/quarto-web
+      theme: github-dark
+      issue-term: title
 ---
 
 <b> About me </b>

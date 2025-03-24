@@ -20,23 +20,23 @@ The research question, "Why do people make certain assertions?" aims to explore 
 
 Epistemic patterns are basically the ways people back up their statements with reasons or evidence. These patterns reflect different beliefs people hold about knowledge, and they're often grouped into pairs that represent opposite (or) partially opposite ways of thinking:
 
-Empiricism and Rationalism:
+<b>Empiricism and Rationalism:</b>
 Empiricism means trusting what we can see, hear, or test through experience or experiments. Rationalism, on the other hand, means relying more on logical thinking or ideas that we think are naturally true, without needing proof from experience.
 
-Foundationalism and Coherentism:
+<b>Foundationalism and Coherentism:</b>
 Foundationalism believes knowledge should start from basic truths, things we consider obviously true, and build from there. Coherentism says knowledge is valid if our ideas consistently fit together, like pieces in a puzzle.
 
-Internalism and Externalism:
+<b>Internalism and Externalism:</b>
 Internalism suggests knowledge depends mostly on what's happening inside our minds, like our personal reasons or justifications. Externalism argues that knowledge also relies on outside facts or conditions we might not be fully aware of.
 
-Skepticism and Fallibilism:
+<b>Skepticism and Fallibilism:</b>
 Skepticism questions whether we can ever truly know something for sure. Fallibilism agrees that absolute certainty is rare but adds that we can still trust our knowledge as long as we’re open to revising it when new evidence comes along.
 
 While these pairs represent opposing or partially opposing viewpoints, real-world reasoning rarely fits neatly into one category. Instead, people’s beliefs and arguments usually fall somewhere along a spectrum, blending different proportions of these ideas.
 
-For starters, this project is focused on identifying proportions of rationalism and empiricism, although all other schools of thought will be systematically included in future phases of research.
+For starters, this project is focused on identifying proportions of rationalism and empiricism, although all other schools of thought will be systematically included in future phases of this project.
 
-The initial goal of this project is to build a reliable classifier that can identify the proportions of rationalism and empiricism in modern texts. Inspired by the Philosophy Data project (<https://philosophydata.com/>), which focuses broadly on identifying philosophical tendencies, our project is specifically interested in detecting epistemic tendencies and knowledge patterns. To achieve this, we'll use transformer-based language models like BERT and RoBERTa. We might also experiment with GPT models, although they're not primarily designed for classification tasks. These models are pre-trained on large-scale text data, and we'll further fine-tune them on carefully annotated examples of rationalist and empiricist language to improve their accuracy and performance for our specific classification task.
+The initial goal of this project is to build a reliable classifier that can identify the proportions of rationalism and empiricism in modern texts. Inspired by the Philosophy Data project (<https://philosophydata.com/>), which focuses broadly on identifying philosophical tendencies, this project is specifically interested in detecting epistemic tendencies and knowledge patterns. To achieve this, we'll use transformer-based language models like BERT and RoBERTa. We might also experiment with GPT models, although they're not primarily designed for classification tasks. These models are pre-trained on large-scale text data, and we'll further fine-tune them on carefully annotated examples of rationalist and empiricist language to improve their accuracy and performance for our specific classification task.
 
 The classification and/or detection of epistemological tendencies in discourse using language models holds significant practical potential. For example, in politics, identifying how people reason helps analysts understand what's behind different policies or voting behaviors. In business, knowing people's reasoning styles can help predict how consumers make decisions or how they'll respond to marketing. In education, recognizing student's reasoning patterns can guide teachers in designing better lessons to develop critical thinking and evidence-assessment skills. In journalism and media, spotting these patterns can help identify misinformation or persuasive techniques, which leads to clearer and more informed public discussions.
 
@@ -88,7 +88,7 @@ The empiricist texts, Hume's "A Treatise of Human Nature" (E3) and Locke's "An E
 
 Leibniz's "Theodicy" has a huge vocabulary size of 13,006 unique words, indicating a highly diverse lexicon and possibly complex conceptual content. Hume's "A Treatise of Human Nature", Descartes's "Meditations on First Philosophy" and Locke’s "An Essay Concerning Human Understanding" also have a considerable vocabulary.
 
-Empiricist texts generally range around 30-40 words per sentence, whereas rationalist texts show more variation, some with extremely long sentences (Descartes) and some shorter (Spinoza’s "Ethics").
+Empiricist texts generally range around 30-40 words per sentence, whereas rationalist texts show more variation, some with extremely long sentences and some shorter.
 
 <b>Corpus Readability</b>
 
@@ -110,7 +110,9 @@ In the empiricist texts, unique words like "sense", "perceived", "experience", a
 
 <img src="../images/corpora-word-frequency.png" alt="corpora-word-frequency" width="800" style="display: block; margin: auto;"/>
 
-The above bar graphs show the frequency of the top 10 words from both corpora rather than book-wise word frequencies. I think the book-wise word frequencies gave us more insights about similarities within corpora and distinction between empiricist and rationalist texts.
+The above bar graphs show the frequency of the top 10 words from both corpora rather than book-wise word frequencies. Although there are common words like "one" and "idea", we can observe some distinctions like empiricist texts using "may" and "must" more frequently, whereas rationalist texts are using "would". Another interesting thing is that empiricists are frequently refering to "mind" and rationalist are refering to both "mind" and "body" (also "thing").
+
+I think the book-wise word frequencies gave us better insights about similarities within corpora and distinction between empiricist and rationalist texts. 
 
 <b>Word Cloud</b>
 

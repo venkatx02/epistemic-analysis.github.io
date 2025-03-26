@@ -159,7 +159,8 @@ ul.task-list li input[type="checkbox"] {
 <p>To explore this research question, an initial corpus has been compiled using texts that explicitly discuss rationalism and empiricism. As a starting point, I’m using the corpus from the Philosophy Data Project (credits: <a href="https://philosophydata.com/bibliography.html" class="uri">https://philosophydata.com/bibliography.html</a>), which includes works by key rationalist and empiricist philosophers. These texts are freely accessible through Project Gutenberg. Thanks to both Philosophy Data Project and Project Gutenberg for making my life easier :)</p>
 <p>The book titles can be found in the previous blog.</p>
 <p>These historical texts serve as a “ground truth” for identifying and labeling rationalist and empiricist language patterns, which I aim to generalize and detect in modern discourse in future phases of the project.</p>
-<p>Here, I tried to examine the word frequency distributions (unigrams) and phrase usage (n-grams) to explore the (latent) thematic differences that could possibly represent empiricism and rationalism.</p>
+<p><b> Exploratory Text Analysis </b></p>
+<p>In this section, I tried to examine the word frequency distributions (unigrams) and phrase usage (n-grams) to explore the (latent) thematic differences that could possibly represent empiricism and rationalism.</p>
 <p><img src="../images/kmeans-unigram.png" alt="kmeans-unigram" width="800" style="display: block; margin: auto;"></p>
 <p>In the first visualization, I tried to look at the words that are more common across the texts, but giving a bit of freedom in terms of word frequency, to create clusters using K-means. Texts like E1, E2, E4, E6 (empiricist), and R1, R4 (rationalist) are tightly packed together, suggesting similar lexicon usage patterns. Meanwhile, Hume’s Treatise of Human Nature (E3) appears more spread out, indicating greater variability in its vocabulary. I then tried to be permissive in terms of document coverage while increasing the threshold for word frequency but no notable changes were found in the clusters.</p>
 <p><img src="../images/kmeans-ngram.png" alt="kmeans-ngram" width="800" style="display: block; margin: auto;"></p>
@@ -176,6 +177,10 @@ ul.task-list li input[type="checkbox"] {
 <p>Left side = more empiricist-weighted words; Right side = more rationalist-weighted words</p>
 <p>In the first plot, words like “always”, “causes” and “much” appear closer to the left (empiricist-leaning?). On the right, words like “god”, “exist”, “thing”, “substance”, and “knowledge” (rationalist leaning).</p>
 <p>Interestingly, some words like “idea” and “mind” show up toward the center (should prolly be used a lot by George Berkeley), implying their use across both traditions but (possibly) in different contexts.</p>
+<p><b> Further Steps </b></p>
+<p>Now that I have enough evidence from the above results to support my major assumptions: empiricists and rationalists have distinct linguistic patterns, and these patterns can be identified as proportions or along a spectrum rather than as pure classes.</p>
+<p>I’ll be moving forward to build classification models. Although I’m over-excited to explore the transformer-based models, I’ll start with traditional machine learning approaches such as SVM, Naive Bayes, and ensemble models, depending on time constraints.</p>
+<p>Code and other supporting files can be found at: <a href="https://github.com/venkatx02/epistemic-analysis.github.io" class="uri">https://github.com/venkatx02/epistemic-analysis.github.io</a></p>
 
 
 

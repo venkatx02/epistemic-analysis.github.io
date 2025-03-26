@@ -1,0 +1,131 @@
+---
+title: "topic-modeling"
+author: "Venkat"
+output: html_notebook
+---
+
+```{r}
+library(quanteda)
+library(text2vec)
+```
+
+```{r}
+emp_path = "C:/Users/venka/OneDrive/Desktop/Text as Data - Epistemic Analysis/Corpus/Empiricism"
+emp_files = list.files(path = emp_path, pattern = "\\.txt$", full.names = TRUE)
+emp_files
+```
+
+```{r}
+rat_path = "C:/Users/venka/OneDrive/Desktop/Text as Data - Epistemic Analysis/Corpus/Rationalism"
+rat_files = list.files(path = rat_path, pattern = "\\.txt$", full.names = TRUE)
+rat_files
+```
+
+```{r}
+emp_texts = sapply(emp_files, function(file) paste(readLines(file, warn = FALSE), collapse = " "))
+emp_corpus = corpus(emp_texts, docnames = basename(emp_files))
+summary(emp_corpus)
+```
+
+```{r}
+rat_texts = sapply(rat_files, function(file) paste(readLines(file, warn = FALSE), collapse = " "))
+rat_corpus = corpus(rat_texts, docnames = basename(rat_files))
+summary(rat_corpus)
+```
+
+```{r}
+emp_tokens = tolower(emp_corpus)
+emp_tokens = word_tokenizer(emp_tokens)
+summary(emp_tokens)
+```
+
+```{r}
+emp_it = itoken(emp_tokens, progressbar = FALSE)
+emp_it
+```
+
+```{r}
+emp_voc = create_vocabulary(emp_it)
+emp_voc = prune_vocabulary(emp_voc, term_count_min = 10)
+dim(emp_voc)
+```
+
+```{r}
+emp_vectorizer =  vocab_vectorizer(emp_voc)
+```
+
+```{r}
+emp_dtm = create_dtm(emp_it, emp_vectorizer, type = "dgTMatrix")
+summary(emp_dtm)
+```
+
+```{r}
+emp_lda = LDA$new(n_topics = 10, doc_topic_prior = 0.1, topic_word_prior = 0.01)
+emp_lda
+```
+
+```{r}
+emp_topic_distr = emp_lda$fit_transform(x = emp_dtm, n_iter = 1000, convergence_tol = 0.001, n_check_convergence = 25, progressbar = FALSE)
+```
+
+```{r}
+barplot(emp_topic_distr[1, ], xlab = "topic", ylab = "proportion", ylim = c(0, 1), names.arg = 1:ncol(emp_topic_distr))
+```
+
+```{r}
+emp_lda$get_top_words(n = 10, topic_number = c(2L, 4L, 9L), lambda = 1)
+```
+
+```{r}
+emp_lda$get_top_words(n = 10, topic_number = c(2L, 4L, 9L), lambda = 0.4)
+```
+
+
+
+```{r}
+rat_tokens = tolower(rat_corpus)
+rat_tokens = word_tokenizer(rat_tokens)
+summary(rat_tokens)
+```
+
+```{r}
+rat_it = itoken(rat_tokens, progressbar = FALSE)
+rat_it
+```
+
+```{r}
+rat_voc = create_vocabulary(rat_it)
+rat_voc = prune_vocabulary(rat_voc, term_count_min = 10)
+rat_voc
+dim(rat_voc)
+```
+
+```{r}
+rat_vectorizer =  vocab_vectorizer(rat_voc)
+```
+
+```{r}
+rat_dtm = create_dtm(rat_it, rat_vectorizer, type = "dgTMatrix")
+summary(rat_dtm)
+```
+
+```{r}
+rat_lda = LDA$new(n_topics = 10, doc_topic_prior = 0.1, topic_word_prior = 0.01)
+rat_lda
+```
+
+```{r}
+rat_topic_distr = rat_lda$fit_transform(x = rat_dtm, n_iter = 1000, convergence_tol = 0.001, n_check_convergence = 25, progressbar = FALSE)
+```
+
+```{r}
+barplot(rat_topic_distr[1, ], xlab = "topic", ylab = "proportion", ylim = c(0, 1), names.arg = 1:ncol(rat_topic_distr))
+```
+
+```{r}
+rat_lda$get_top_words(n = 10, topic_number = c(4L, 8L, 9L), lambda = 1)
+```
+
+```{r}
+rat_lda$get_top_words(n = 10, topic_number = c(4L, 8L, 9L), lambda = 0.4)
+```

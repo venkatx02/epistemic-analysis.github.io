@@ -24,7 +24,9 @@ The book titles can be found in the previous blog.
 
 These historical texts serve as a “ground truth” for identifying and labeling rationalist and empiricist language patterns, which I aim to generalize and detect in modern discourse in future phases of the project.
 
-Here, I tried to examine the word frequency distributions (unigrams) and phrase usage (n-grams) to explore the (latent) thematic differences that could possibly represent empiricism and rationalism.
+<b> Exploratory Text Analysis </b>
+
+In this section, I tried to examine the word frequency distributions (unigrams) and phrase usage (n-grams) to explore the (latent) thematic differences that could possibly represent empiricism and rationalism.
 
 <img src="../images/kmeans-unigram.png" alt="kmeans-unigram" width="800" style="display: block; margin: auto;"/>
 
@@ -57,3 +59,9 @@ Left side = more empiricist-weighted words; Right side = more rationalist-weight
 In the first plot, words like "always", "causes" and "much" appear closer to the left (empiricist-leaning?). On the right, words like "god", "exist", "thing", "substance", and "knowledge" (rationalist leaning).
 
 Interestingly, some words like "idea" and "mind" show up toward the center (should prolly be used a lot by George Berkeley), implying their use across both traditions but (possibly) in different contexts.
+
+<b> Further Steps </b>
+
+Now that I have enough evidence from the above results to support my major assumptions: empiricists and rationalists have distinct linguistic patterns, and these patterns can be identified as proportions or along a spectrum rather than as pure classes. I’ll be moving forward to build classification models. Although I’m over-excited to explore the transformer-based models, I’ll start with traditional machine learning approaches such as SVM, Naive Bayes, and ensemble models, depending on time constraints.
+
+Code and other supporting files can be found at: <https://github.com/venkatx02/epistemic-analysis.github.io>

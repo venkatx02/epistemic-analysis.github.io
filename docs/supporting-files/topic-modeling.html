@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Venkat">
+
+<title>topic-modeling – Epistemic Analysis Project</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Epistemic Analysis Project</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Introduction</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../author.html"> 
+<span class="menu-text">About Author</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">topic-modeling</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Venkat </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'quanteda' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Package version: 4.2.0
+Unicode version: 15.1
+ICU version: 74.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Parallel computing: 16 of 16 threads used.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>See https://quanteda.io for tutorials and examples.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(text2vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'text2vec' was built under R version 4.4.3</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>emp_path <span class="ot">=</span> <span class="st">"C:/Users/venka/OneDrive/Desktop/Text as Data - Epistemic Analysis/Corpus/Empiricism"</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>emp_files <span class="ot">=</span> <span class="fu">list.files</span>(<span class="at">path =</span> emp_path, <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.txt$"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>emp_files</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "C:/Users/venka/OneDrive/Desktop/Text as Data - Epistemic Analysis/Corpus/Empiricism/E1-BerkeleyGeorge-ATreatiseConcerningthePrinciplesofHumanKnowledge.txt"                       
+[2] "C:/Users/venka/OneDrive/Desktop/Text as Data - Epistemic Analysis/Corpus/Empiricism/E2-BerkeleyGeorge-ThreeDialoguesbetweenHylasandPhilonousinOppositiontoScepticsandAtheists.txt"
+[3] "C:/Users/venka/OneDrive/Desktop/Text as Data - Epistemic Analysis/Corpus/Empiricism/E3-HumeDavid-ATreatiseofHumanNature.txt"                                                      
+[4] "C:/Users/venka/OneDrive/Desktop/Text as Data - Epistemic Analysis/Corpus/Empiricism/E4-HumeDavid-DialoguesConcerningNaturalReligion.txt"                                          
+[5] "C:/Users/venka/OneDrive/Desktop/Text as Data - Epistemic Analysis/Corpus/Empiricism/E5-LockeJohn-AnEssayConcerningHumanUnderstanding.txt"                                         
+[6] "C:/Users/venka/OneDrive/Desktop/Text as Data - Epistemic Analysis/Corpus/Empiricism/E6-LockeJohn-SecondTreatiseofGovernment.txt"                                                  </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>rat_path <span class="ot">=</span> <span class="st">"C:/Users/venka/OneDrive/Desktop/Text as Data - Epistemic Analysis/Corpus/Rationalism"</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>rat_files <span class="ot">=</span> <span class="fu">list.files</span>(<span class="at">path =</span> rat_path, <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.txt$"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>rat_files</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "C:/Users/venka/OneDrive/Desktop/Text as Data - Epistemic Analysis/Corpus/Rationalism/R1-DescartesRené-ADiscourseonMethod.txt"                                              
+[2] "C:/Users/venka/OneDrive/Desktop/Text as Data - Epistemic Analysis/Corpus/Rationalism/R2-LeibnizGW-Theodicy_EssaysontheGoodnessofGod,theFreedomofMan,andtheOriginofEvil.txt"
+[3] "C:/Users/venka/OneDrive/Desktop/Text as Data - Epistemic Analysis/Corpus/Rationalism/R3-SpinozaBenedictde-Ethics.txt"                                                      
+[4] "C:/Users/venka/OneDrive/Desktop/Text as Data - Epistemic Analysis/Corpus/Rationalism/R4-SpinozaBenedictde-OntheImprovementoftheUnderstanding.txt"                          
+[5] "C:/Users/venka/OneDrive/Desktop/Text as Data - Epistemic Analysis/Corpus/Rationalism/R5-DescartesRené-MeditationsonFirstPhilosophy.txt"                                    </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>emp_texts <span class="ot">=</span> <span class="fu">sapply</span>(emp_files, <span class="cf">function</span>(file) <span class="fu">paste</span>(<span class="fu">readLines</span>(file, <span class="at">warn =</span> <span class="cn">FALSE</span>), <span class="at">collapse =</span> <span class="st">" "</span>))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>emp_corpus <span class="ot">=</span> <span class="fu">corpus</span>(emp_texts, <span class="at">docnames =</span> <span class="fu">basename</span>(emp_files))</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(emp_corpus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Corpus consisting of 6 documents, showing 6 documents:
+
+                                                                                          Text
+                        E1-BerkeleyGeorge-ATreatiseConcerningthePrinciplesofHumanKnowledge.txt
+ E2-BerkeleyGeorge-ThreeDialoguesbetweenHylasandPhilonousinOppositiontoScepticsandAtheists.txt
+                                                       E3-HumeDavid-ATreatiseofHumanNature.txt
+                                           E4-HumeDavid-DialoguesConcerningNaturalReligion.txt
+                                          E5-LockeJohn-AnEssayConcerningHumanUnderstanding.txt
+                                                   E6-LockeJohn-SecondTreatiseofGovernment.txt
+ Types Tokens Sentences
+  4198  42907      1165
+  3289  42815      2587
+  8330 257027      6988
+  4410  41821      1226
+  7802 172218      4525
+  5038  65406      1596</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>rat_texts <span class="ot">=</span> <span class="fu">sapply</span>(rat_files, <span class="cf">function</span>(file) <span class="fu">paste</span>(<span class="fu">readLines</span>(file, <span class="at">warn =</span> <span class="cn">FALSE</span>), <span class="at">collapse =</span> <span class="st">" "</span>))</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>rat_corpus <span class="ot">=</span> <span class="fu">corpus</span>(rat_texts, <span class="at">docnames =</span> <span class="fu">basename</span>(rat_files))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rat_corpus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Corpus consisting of 5 documents, showing 5 documents:
+
+                                                                                  Text
+                                               R1-DescartesRené-ADiscourseonMethod.txt
+ R2-LeibnizGW-Theodicy_EssaysontheGoodnessofGod,theFreedomofMan,andtheOriginofEvil.txt
+                                                       R3-SpinozaBenedictde-Ethics.txt
+                           R4-SpinozaBenedictde-OntheImprovementoftheUnderstanding.txt
+                                     R5-DescartesRené-MeditationsonFirstPhilosophy.txt
+ Types Tokens Sentences
+  2995  25426       284
+ 13187 216057      7291
+  4185 108665      3692
+  2174  20143       475
+  8933 169295      4808</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>emp_tokens <span class="ot">=</span> <span class="fu">tolower</span>(emp_corpus)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>emp_tokens <span class="ot">=</span> <span class="fu">word_tokenizer</span>(emp_tokens)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(emp_tokens)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                              Length
+E1-BerkeleyGeorge-ATreatiseConcerningthePrinciplesofHumanKnowledge.txt                         37449
+E2-BerkeleyGeorge-ThreeDialoguesbetweenHylasandPhilonousinOppositiontoScepticsandAtheists.txt  36555
+E3-HumeDavid-ATreatiseofHumanNature.txt                                                       226156
+E4-HumeDavid-DialoguesConcerningNaturalReligion.txt                                            35983
+E5-LockeJohn-AnEssayConcerningHumanUnderstanding.txt                                          150207
+E6-LockeJohn-SecondTreatiseofGovernment.txt                                                    56560
+                                                                                              Class 
+E1-BerkeleyGeorge-ATreatiseConcerningthePrinciplesofHumanKnowledge.txt                        -none-
+E2-BerkeleyGeorge-ThreeDialoguesbetweenHylasandPhilonousinOppositiontoScepticsandAtheists.txt -none-
+E3-HumeDavid-ATreatiseofHumanNature.txt                                                       -none-
+E4-HumeDavid-DialoguesConcerningNaturalReligion.txt                                           -none-
+E5-LockeJohn-AnEssayConcerningHumanUnderstanding.txt                                          -none-
+E6-LockeJohn-SecondTreatiseofGovernment.txt                                                   -none-
+                                                                                              Mode     
+E1-BerkeleyGeorge-ATreatiseConcerningthePrinciplesofHumanKnowledge.txt                        character
+E2-BerkeleyGeorge-ThreeDialoguesbetweenHylasandPhilonousinOppositiontoScepticsandAtheists.txt character
+E3-HumeDavid-ATreatiseofHumanNature.txt                                                       character
+E4-HumeDavid-DialoguesConcerningNaturalReligion.txt                                           character
+E5-LockeJohn-AnEssayConcerningHumanUnderstanding.txt                                          character
+E6-LockeJohn-SecondTreatiseofGovernment.txt                                                   character</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>emp_it <span class="ot">=</span> <span class="fu">itoken</span>(emp_tokens, <span class="at">progressbar =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>emp_it</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;itoken&gt;
+  Inherits from: &lt;CallbackIterator&gt;
+  Public:
+    callback: function (x) 
+    clone: function (deep = FALSE) 
+    initialize: function (x, callback = identity) 
+    is_complete: active binding
+    length: active binding
+    move_cursor: function () 
+    nextElem: function () 
+    x: GenericIterator, iterator, R6</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>emp_voc <span class="ot">=</span> <span class="fu">create_vocabulary</span>(emp_it)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>emp_voc <span class="ot">=</span> <span class="fu">prune_vocabulary</span>(emp_voc, <span class="at">term_count_min =</span> <span class="dv">10</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(emp_voc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3149    3</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>emp_vectorizer <span class="ot">=</span>  <span class="fu">vocab_vectorizer</span>(emp_voc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>emp_dtm <span class="ot">=</span> <span class="fu">create_dtm</span>(emp_it, emp_vectorizer, <span class="at">type =</span> <span class="st">"dgTMatrix"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(emp_dtm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Length     Class      Mode 
+    18894 dgTMatrix        S4 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>emp_lda <span class="ot">=</span> LDA<span class="sc">$</span><span class="fu">new</span>(<span class="at">n_topics =</span> <span class="dv">10</span>, <span class="at">doc_topic_prior =</span> <span class="fl">0.1</span>, <span class="at">topic_word_prior =</span> <span class="fl">0.01</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>emp_lda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;WarpLDA&gt;
+  Inherits from: &lt;LDA&gt;
+  Public:
+    clone: function (deep = FALSE) 
+    components: active binding
+    fit_transform: function (x, n_iter = 1000, convergence_tol = 0.001, n_check_convergence = 10, 
+    get_top_words: function (n = 10, topic_number = 1L:private$n_topics, lambda = 1) 
+    initialize: function (n_topics = 10L, doc_topic_prior = 50/n_topics, topic_word_prior = 1/n_topics, 
+    plot: function (lambda.step = 0.1, reorder.topics = FALSE, doc_len = private$doc_len, 
+    topic_word_distribution: active binding
+    transform: function (x, n_iter = 1000, convergence_tol = 0.001, n_check_convergence = 10, 
+  Private:
+    calc_pseudo_loglikelihood: function (ptr = private$ptr) 
+    check_convert_input: function (x) 
+    components_: NULL
+    doc_len: NULL
+    doc_topic_distribution: function () 
+    doc_topic_distribution_with_prior: function () 
+    doc_topic_matrix: NULL
+    doc_topic_prior: 0.1
+    fit_transform_internal: function (model_ptr, n_iter, convergence_tol, n_check_convergence, 
+    get_c_all: function () 
+    get_c_all_local: function () 
+    get_doc_topic_matrix: function (prt, nr) 
+    get_topic_word_count: function () 
+    init_model_dtm: function (x, ptr = private$ptr) 
+    internal_matrix_formats: list
+    is_initialized: FALSE
+    n_iter_inference: 10
+    n_topics: 10
+    ptr: NULL
+    reset_c_local: function () 
+    run_iter_doc: function (update_topics = TRUE, ptr = private$ptr) 
+    run_iter_word: function (update_topics = TRUE, ptr = private$ptr) 
+    seeds: 1624839384.98675 1774916653.34698
+    set_c_all: function (x) 
+    set_internal_matrix_formats: function (sparse = NULL, dense = NULL) 
+    topic_word_distribution_with_prior: function () 
+    topic_word_prior: 0.01
+    transform_internal: function (x, n_iter = 1000, convergence_tol = 0.001, n_check_convergence = 10, 
+    vocabulary: NULL</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>emp_topic_distr <span class="ot">=</span> emp_lda<span class="sc">$</span><span class="fu">fit_transform</span>(<span class="at">x =</span> emp_dtm, <span class="at">n_iter =</span> <span class="dv">1000</span>, <span class="at">convergence_tol =</span> <span class="fl">0.001</span>, <span class="at">n_check_convergence =</span> <span class="dv">25</span>, <span class="at">progressbar =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>INFO  [18:09:28.278] early stopping at 425 iteration
+INFO  [18:09:29.288] early stopping at 50 iteration</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(emp_topic_distr[<span class="dv">1</span>, ], <span class="at">xlab =</span> <span class="st">"topic"</span>, <span class="at">ylab =</span> <span class="st">"proportion"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">names.arg =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(emp_topic_distr))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="topic-modeling_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>emp_lda<span class="sc">$</span><span class="fu">get_top_words</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">topic_number =</span> <span class="fu">c</span>(<span class="dv">2</span>L, <span class="dv">4</span>L, <span class="dv">9</span>L), <span class="at">lambda =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      [,1]   [,2]   [,3] 
+ [1,] "i"    "the"  "of" 
+ [2,] "you"  "and"  "and"
+ [3,] "the"  "in"   "to" 
+ [4,] "it"   "to"   "the"
+ [5,] "in"   "of"   "in" 
+ [6,] "not"  "have" "are"
+ [7,] "to"   "a"    "it" 
+ [8,] "a"    "you"  "not"
+ [9,] "is"   "so"   "be" 
+[10,] "phil" "any"  "by" </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>emp_lda<span class="sc">$</span><span class="fu">get_top_words</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">topic_number =</span> <span class="fu">c</span>(<span class="dv">2</span>L, <span class="dv">4</span>L, <span class="dv">9</span>L), <span class="at">lambda =</span> <span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      [,1]         [,2]        [,3]      
+ [1,] "you"        "world"     "innate"  
+ [2,] "phil"       "universe"  "duration"
+ [3,] "hyl"        "ever"      "will"    
+ [4,] "perceived"  "religion"  "are"     
+ [5,] "things"     "animal"    "things"  
+ [6,] "i"          "cleanthes" "names"   
+ [7,] "your"       "human"     "man"     
+ [8,] "exist"      "whole"     "body"    
+ [9,] "unthinking" "cause"     "come"    
+[10,] "philonous"  "philo"     "and"     </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>rat_tokens <span class="ot">=</span> <span class="fu">tolower</span>(rat_corpus)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>rat_tokens <span class="ot">=</span> <span class="fu">word_tokenizer</span>(rat_tokens)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rat_tokens)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                      Length
+R1-DescartesRené-ADiscourseonMethod.txt                                                23060
+R2-LeibnizGW-Theodicy_EssaysontheGoodnessofGod,theFreedomofMan,andtheOriginofEvil.txt 189633
+R3-SpinozaBenedictde-Ethics.txt                                                        88688
+R4-SpinozaBenedictde-OntheImprovementoftheUnderstanding.txt                            16512
+R5-DescartesRené-MeditationsonFirstPhilosophy.txt                                     145502
+                                                                                      Class 
+R1-DescartesRené-ADiscourseonMethod.txt                                               -none-
+R2-LeibnizGW-Theodicy_EssaysontheGoodnessofGod,theFreedomofMan,andtheOriginofEvil.txt -none-
+R3-SpinozaBenedictde-Ethics.txt                                                       -none-
+R4-SpinozaBenedictde-OntheImprovementoftheUnderstanding.txt                           -none-
+R5-DescartesRené-MeditationsonFirstPhilosophy.txt                                     -none-
+                                                                                      Mode     
+R1-DescartesRené-ADiscourseonMethod.txt                                               character
+R2-LeibnizGW-Theodicy_EssaysontheGoodnessofGod,theFreedomofMan,andtheOriginofEvil.txt character
+R3-SpinozaBenedictde-Ethics.txt                                                       character
+R4-SpinozaBenedictde-OntheImprovementoftheUnderstanding.txt                           character
+R5-DescartesRené-MeditationsonFirstPhilosophy.txt                                     character</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>rat_it <span class="ot">=</span> <span class="fu">itoken</span>(rat_tokens, <span class="at">progressbar =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>rat_it</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;itoken&gt;
+  Inherits from: &lt;CallbackIterator&gt;
+  Public:
+    callback: function (x) 
+    clone: function (deep = FALSE) 
+    initialize: function (x, callback = identity) 
+    is_complete: active binding
+    length: active binding
+    move_cursor: function () 
+    nextElem: function () 
+    x: GenericIterator, iterator, R6</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>rat_voc <span class="ot">=</span> <span class="fu">create_vocabulary</span>(rat_it)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>rat_voc <span class="ot">=</span> <span class="fu">prune_vocabulary</span>(rat_voc, <span class="at">term_count_min =</span> <span class="dv">10</span>)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>rat_voc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of docs: 5 
+0 stopwords:  ... 
+ngram_min = 1; ngram_max = 1 
+Vocabulary: 
+        term term_count doc_count
+      &lt;char&gt;      &lt;int&gt;     &lt;int&gt;
+   1:    105         10         3
+   2:    115         10         2
+   3:    116         10         2
+   4:    135         10         2
+   5:    162         10         2
+  ---                            
+3285:    and      11472         5
+3286:   that      11677         5
+3287:     to      13415         5
+3288:     of      18118         5
+3289:    the      26993         5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(rat_voc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3289    3</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>rat_vectorizer <span class="ot">=</span>  <span class="fu">vocab_vectorizer</span>(rat_voc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>rat_dtm <span class="ot">=</span> <span class="fu">create_dtm</span>(rat_it, rat_vectorizer, <span class="at">type =</span> <span class="st">"dgTMatrix"</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rat_dtm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Length     Class      Mode 
+    16445 dgTMatrix        S4 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>rat_lda <span class="ot">=</span> LDA<span class="sc">$</span><span class="fu">new</span>(<span class="at">n_topics =</span> <span class="dv">10</span>, <span class="at">doc_topic_prior =</span> <span class="fl">0.1</span>, <span class="at">topic_word_prior =</span> <span class="fl">0.01</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>rat_lda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;WarpLDA&gt;
+  Inherits from: &lt;LDA&gt;
+  Public:
+    clone: function (deep = FALSE) 
+    components: active binding
+    fit_transform: function (x, n_iter = 1000, convergence_tol = 0.001, n_check_convergence = 10, 
+    get_top_words: function (n = 10, topic_number = 1L:private$n_topics, lambda = 1) 
+    initialize: function (n_topics = 10L, doc_topic_prior = 50/n_topics, topic_word_prior = 1/n_topics, 
+    plot: function (lambda.step = 0.1, reorder.topics = FALSE, doc_len = private$doc_len, 
+    topic_word_distribution: active binding
+    transform: function (x, n_iter = 1000, convergence_tol = 0.001, n_check_convergence = 10, 
+  Private:
+    calc_pseudo_loglikelihood: function (ptr = private$ptr) 
+    check_convert_input: function (x) 
+    components_: NULL
+    doc_len: NULL
+    doc_topic_distribution: function () 
+    doc_topic_distribution_with_prior: function () 
+    doc_topic_matrix: NULL
+    doc_topic_prior: 0.1
+    fit_transform_internal: function (model_ptr, n_iter, convergence_tol, n_check_convergence, 
+    get_c_all: function () 
+    get_c_all_local: function () 
+    get_doc_topic_matrix: function (prt, nr) 
+    get_topic_word_count: function () 
+    init_model_dtm: function (x, ptr = private$ptr) 
+    internal_matrix_formats: list
+    is_initialized: FALSE
+    n_iter_inference: 10
+    n_topics: 10
+    ptr: NULL
+    reset_c_local: function () 
+    run_iter_doc: function (update_topics = TRUE, ptr = private$ptr) 
+    run_iter_word: function (update_topics = TRUE, ptr = private$ptr) 
+    seeds: 2132277708.01416 575980982.463576
+    set_c_all: function (x) 
+    set_internal_matrix_formats: function (sparse = NULL, dense = NULL) 
+    topic_word_distribution_with_prior: function () 
+    topic_word_prior: 0.01
+    transform_internal: function (x, n_iter = 1000, convergence_tol = 0.001, n_check_convergence = 10, 
+    vocabulary: NULL</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>rat_topic_distr <span class="ot">=</span> rat_lda<span class="sc">$</span><span class="fu">fit_transform</span>(<span class="at">x =</span> rat_dtm, <span class="at">n_iter =</span> <span class="dv">1000</span>, <span class="at">convergence_tol =</span> <span class="fl">0.001</span>, <span class="at">n_check_convergence =</span> <span class="dv">25</span>, <span class="at">progressbar =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>INFO  [18:09:36.732] early stopping at 400 iteration
+INFO  [18:09:37.572] early stopping at 50 iteration</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(rat_topic_distr[<span class="dv">1</span>, ], <span class="at">xlab =</span> <span class="st">"topic"</span>, <span class="at">ylab =</span> <span class="st">"proportion"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">names.arg =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(rat_topic_distr))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="topic-modeling_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>rat_lda<span class="sc">$</span><span class="fu">get_top_words</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">topic_number =</span> <span class="fu">c</span>(<span class="dv">4</span>L, <span class="dv">8</span>L, <span class="dv">9</span>L), <span class="at">lambda =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      [,1]   [,2]   [,3]   
+ [1,] "the"  "i"    "to"   
+ [2,] "that" "the"  "i"    
+ [3,] "to"   "is"   "that" 
+ [4,] "a"    "from" "and"  
+ [5,] "of"   "by"   "of"   
+ [6,] "but"  "that" "which"
+ [7,] "and"  "for"  "in"   
+ [8,] "be"   "idea" "than" 
+ [9,] "not"  "a"    "them" 
+[10,] "god"  "in"   "as"   </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>rat_lda<span class="sc">$</span><span class="fu">get_top_words</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">topic_number =</span> <span class="fu">c</span>(<span class="dv">4</span>L, <span class="dv">8</span>L, <span class="dv">9</span>L), <span class="at">lambda =</span> <span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      [,1]     [,2]      [,3]        
+ [1,] "but"    "i"       "i"         
+ [2,] "on"     "idea"    "to"        
+ [3,] "cannot" "clearly" "than"      
+ [4,] "that"   "exists"  "my"        
+ [5,] "god"    "from"    "me"        
+ [6,] "the"    "clear"   "them"      
+ [7,] "sense"  "think"   "found"     
+ [8,] "not"    "thing"   "principles"
+ [9,] "be"     "is"      "much"      
+[10,] "a"      "by"      "use"       </code></pre>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

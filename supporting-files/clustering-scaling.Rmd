@@ -1,0 +1,106 @@
+---
+title: "clustering-scaling"
+author: "Venkat"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(quanteda)
+library(quanteda.textmodels)
+library(quanteda.textplots)
+```
+
+```{r}
+files_path = "C:/Users/venka/OneDrive/Desktop/Text as Data - Epistemic Analysis/Corpus/Full-Mixed Corpus"
+files = list.files(path = files_path, pattern = "\\.txt$", full.names = TRUE)
+files
+```
+
+```{r}
+texts = sapply(files, function(file) paste(readLines(file, warn = FALSE), collapse = " "))
+corpus = corpus(texts, docnames = basename(files))
+summary(corpus)
+```
+
+```{r}
+tokens = tokens(corpus, remove_punct = TRUE, remove_numbers = TRUE, remove_symbols = TRUE)
+tokens = tokens_tolower(tokens)
+tokens = tokens_remove(tokens, stopwords("en"))
+tokens = tokens_wordstem(tokens, language = "english")
+tokens = tokens_remove(
+  tokens,
+  pattern = "^(?i)(m{0,4}(cm|cd|d?c{0,3})(xc|xl|l?x{0,3})(ix|iv|v?i{0,3}))$",
+  valuetype = "regex"
+)
+head(tokens)
+```
+
+```{r}
+#tokens = tokens_ngrams(tokens, n = 1:3)
+#head(tokens)
+```
+
+
+```{r}
+dfm = dfm(tokens) |> dfm_trim(max_termfreq = 1000, min_docfreq = 6)
+head(dfm)
+topfeatures(dfm)
+```
+
+```{r}
+dfm_matrix = as.matrix(dfm)
+scaled_matrix = scale(dfm_matrix)
+```
+
+```{r}
+kmeans_result = kmeans(scaled_matrix, centers = 2)
+clusters = as.factor(kmeans_result$cluster)
+```
+
+```{r}
+pca = prcomp(scaled_matrix)
+pca_data = data.frame(pca$x[, 1:2])
+pca_data$doc = rownames(scaled_matrix)
+pca_data$doc_short = substr(pca_data$doc, 1, 2)
+pca_data$cluster = as.factor(clusters)
+pca_data
+```
+
+```{r}
+ggplot(pca_data, aes(x = PC1, y = PC2, color = cluster, label = doc_short)) +
+  geom_point(size = 1) +
+  geom_text(vjust = 2, size = 3) +
+  stat_ellipse(aes(group = cluster), type = "norm", linetype = "solid", geom = "polygon", alpha = 0.1, size = 1) +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  ggtitle("K-Means Clustering - Full Feature Matrix")
+```
+
+```{r}
+dist_matrix = dist(scaled_matrix)
+hc_result = hclust(dist_matrix, method = "ward.D2")
+```
+
+```{r}
+plot(hc_result, labels = substr(rownames(scaled_matrix), 1, 2), main = "Hierarchical Clustering Dendrogram (FFM)")
+rect.hclust(hc_result, k = 2, border = "red")
+```
+
+```{r}
+docnames(dfm) = sub("^(([^-]+-[^-]+)).*", "\\1", docnames(dfm))
+wf_model = textmodel_wordfish(dfm)
+summary(wf_model)
+```
+
+```{r}
+plot1 = textplot_scale1d(wf_model)
+plot1 + ggtitle("Wordfish Estimated Positions - Latent Scale", subtitle = "")
+```
+
+```{r}
+plot2 = textplot_scale1d(wf_model, margin = "features", highlighted = c("observ", "perceiv", "mind", "bodi", "idea", "think", "though", "man", "men", "principl", "god", "exist", "object", "relat", "thing", "reason", "moral"))
+plot2 + ggtitle("Wordfish Feature Discrimination - Bigrams/Trigrams", subtitle = "")
+```
+

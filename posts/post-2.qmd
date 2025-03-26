@@ -6,7 +6,7 @@ format: html
 comments: 
     utterances:
       repo: quarto-dev/quarto-web
-      theme: github-dark
+      theme: github-light
       issue-term: title
 ---
 
@@ -18,7 +18,7 @@ I'll start by reframing the research question... (They say good research questio
 
 The research question, "Why do people make certain assertions?" aims to explore and understand how individuals, groups, or societies think about, acquire, and justify knowledge, including their beliefs about the nature of knowledge, truth, and evidence—what we’ll call "epistemic patterns." These patterns can be identified by analyzing modern digital discourse from spaces such as social media, customer reviews, or debates. For example, when someone on social media says, "Vaccines are essential because clinical trials show they work", they're using an empiricist pattern. They trust evidence and real-world observations. On the other hand, someone who says, "Freedom of speech matters because it's a natural right", follows a rationalist pattern. They rely on logical reasoning and principles they believe are naturally true. By studying these patterns, we can better understand how people reason, what influences their beliefs, and how they persuade others.
 
-Epistemic patterns are basically the ways people back up their statements with reasons or evidence. These patterns reflect different beliefs people hold about knowledge, and they're often grouped into pairs that represent opposite (or) partially opposite ways of thinking:
+<b>Epistemic patterns are basically the ways people back up their statements with reasons or evidence. These patterns reflect different beliefs people hold about knowledge, and they're often grouped into pairs that represent opposite (or) partially opposite ways of thinking:</b>
 
 <b>Empiricism and Rationalism:</b>
 Empiricism means trusting what we can see, hear, or test through experience or experiments. Rationalism, on the other hand, means relying more on logical thinking or ideas that we think are naturally true, without needing proof from experience.

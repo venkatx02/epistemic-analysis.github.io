@@ -5,7 +5,7 @@ date: "2025-02-12"
 format: html
 comments: 
     utterances:
-      repo: quarto-dev/quarto-web
+      repo: venkatx02/epistemic-analysis.github.io
       theme: github-light
       issue-term: title
 ---

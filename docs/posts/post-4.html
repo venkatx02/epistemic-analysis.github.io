@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Venkat Dasari">
+<meta name="dcterms.date" content="2025-04-09">
 
-<title>Blog – Epistemic Analysis Project</title>
+<title>On the Way – Epistemic Analysis Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,67 +68,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -138,7 +80,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Epistemic Analysis Project</span>
     </a>
   </div>
@@ -149,17 +91,17 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Introduction</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+    <a class="nav-link" href="../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./author.html"> 
+    <a class="nav-link" href="../author.html"> 
 <span class="menu-text">About Author</span></a>
   </li>  
 </ul>
@@ -173,22 +115,34 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div></div></div>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Blog</h1>
+<h1 class="title">On the Way</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Venkat Dasari </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 9, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -198,129 +152,17 @@ window.Quarto = {
 </header>
 
 
+<p><b> Research Question </b></p>
+<p><b> Why do people make certain assertions? </b></p>
+<p>The research question, “Why do people make certain assertions?” aims to explore and understand how individuals, groups, or societies think about, acquire, and justify knowledge, including their beliefs about the nature of knowledge, truth, and evidence—what we’ll call “epistemic patterns.” These patterns can be identified by analyzing modern digital discourse from spaces such as social media, customer reviews, or debates. For example, when someone on social media says, “Vaccines are essential because clinical trials show they work”, they’re using an empiricist pattern. They trust evidence and real-world observations. On the other hand, someone who says, “Freedom of speech matters because it’s a natural right”, follows a rationalist pattern. They rely on logical reasoning and principles they believe are naturally true. By studying these patterns, we can better understand how people reason, what influences their beliefs, and how they persuade others.</p>
+<p>The initial goal of this project is to build a reliable classifier that can identify the proportions of rationalism and empiricism in modern texts. Inspired by the Philosophy Data project (<a href="https://philosophydata.com/" class="uri">https://philosophydata.com/</a>), which focuses broadly on identifying philosophical tendencies, this project is specifically interested in detecting epistemic tendencies and knowledge patterns. To achieve this, we’ll use transformer-based language models like BERT and RoBERTa. We might also experiment with GPT models, although they’re not primarily designed for classification tasks. These models are pre-trained on large-scale text data, and we’ll further fine-tune them on carefully annotated examples of rationalist and empiricist language to improve their accuracy and performance for our specific classification task.</p>
+<p>To explore this research question, an initial corpus has been compiled using texts that explicitly discuss rationalism and empiricism. As a starting point, I’m using the corpus from the Philosophy Data Project (credits: <a href="https://philosophydata.com/bibliography.html" class="uri">https://philosophydata.com/bibliography.html</a>), which includes works by key rationalist and empiricist philosophers. These texts are freely accessible through Project Gutenberg. Thanks to both Philosophy Data Project and Project Gutenberg for making my life easier :)</p>
+<p>The book titles can be found in the previous blog.</p>
+<p>These historical texts serve as a “ground truth” for identifying and labeling rationalist and empiricist language patterns, which I aim to generalize and detect in modern discourse in future phases of the project.</p>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1744171200000" data-listing-file-modified-sort="1744252664792" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="365">
-<div class="thumbnail">
-<p><a href="./posts/post-4.html" class="no-external"></a></p><a href="./posts/post-4.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/post-4.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/post-4.html" class="no-external">On the Way</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/post-4.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/post-4.html" class="no-external"><b> Research Question </b></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/post-4.html" class="no-external">
-<div class="listing-date">
-2025-04-09
-</div>
-<div class="listing-author">
-Venkat Dasari
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1742961600000" data-listing-file-modified-sort="1743081449075" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1080">
-<div class="thumbnail">
-<p><a href="./posts/post-3.html" class="no-external"></a></p><a href="./posts/post-3.html" class="no-external">
-<p class="card-img-top"><img src="images\kmeans-unigram.png" alt="kmeans-unigram"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/post-3.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/post-3.html" class="no-external">Exploring the Corpus - 2</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/post-3.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/post-3.html" class="no-external"><b> Research Question </b></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/post-3.html" class="no-external">
-<div class="listing-date">
-2025-03-26
-</div>
-<div class="listing-author">
-Venkat Dasari
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1740546000000" data-listing-file-modified-sort="1743081449029" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1516">
-<div class="thumbnail">
-<p><a href="./posts/post-2.html" class="no-external"></a></p><a href="./posts/post-2.html" class="no-external">
-<p class="card-img-top"><img src="images\corpus-summary.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/post-2.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/post-2.html" class="no-external">Exploring the Corpus</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/post-2.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/post-2.html" class="no-external">I’ll start by reframing the research question… (They say good research questions start with “Why?”)</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/post-2.html" class="no-external">
-<div class="listing-date">
-2025-02-26
-</div>
-<div class="listing-author">
-Venkat Dasari
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1739336400000" data-listing-file-modified-sort="1743081422076" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="561">
-<div class="thumbnail">
-<p><a href="./posts/post-1.html" class="no-external"></a></p><a href="./posts/post-1.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/post-1.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/post-1.html" class="no-external">An Introduction</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/post-1.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/post-1.html" class="no-external"><b> About me </b></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/post-1.html" class="no-external">
-<div class="listing-date">
-2025-02-12
-</div>
-<div class="listing-author">
-Venkat Dasari
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -740,6 +582,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
+</script>
+<script src="https://utteranc.es/client.js" repo="venkatx02/epistemic-analysis.github.io" issue-term="title" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
 

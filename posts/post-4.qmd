@@ -1,0 +1,25 @@
+---
+title: "On the Way"
+author: "Venkat Dasari"
+date: "2025-04-09"
+format: html
+comments: 
+    utterances:
+      repo: venkatx02/epistemic-analysis.github.io
+      theme: github-light
+      issue-term: title
+---
+
+<b> Research Question </b>
+
+<b> Why do people make certain assertions? </b>
+
+The research question, "Why do people make certain assertions?" aims to explore and understand how individuals, groups, or societies think about, acquire, and justify knowledge, including their beliefs about the nature of knowledge, truth, and evidence—what we’ll call "epistemic patterns." These patterns can be identified by analyzing modern digital discourse from spaces such as social media, customer reviews, or debates. For example, when someone on social media says, "Vaccines are essential because clinical trials show they work", they're using an empiricist pattern. They trust evidence and real-world observations. On the other hand, someone who says, "Freedom of speech matters because it's a natural right", follows a rationalist pattern. They rely on logical reasoning and principles they believe are naturally true. By studying these patterns, we can better understand how people reason, what influences their beliefs, and how they persuade others.
+
+The initial goal of this project is to build a reliable classifier that can identify the proportions of rationalism and empiricism in modern texts. Inspired by the Philosophy Data project (<https://philosophydata.com/>), which focuses broadly on identifying philosophical tendencies, this project is specifically interested in detecting epistemic tendencies and knowledge patterns. To achieve this, we'll use transformer-based language models like BERT and RoBERTa. We might also experiment with GPT models, although they're not primarily designed for classification tasks. These models are pre-trained on large-scale text data, and we'll further fine-tune them on carefully annotated examples of rationalist and empiricist language to improve their accuracy and performance for our specific classification task.
+
+To explore this research question, an initial corpus has been compiled using texts that explicitly discuss rationalism and empiricism. As a starting point, I’m using the corpus from the Philosophy Data Project (credits: <https://philosophydata.com/bibliography.html>), which includes works by key rationalist and empiricist philosophers. These texts are freely accessible through Project Gutenberg. Thanks to both Philosophy Data Project and Project Gutenberg for making my life easier :)
+
+The book titles can be found in the previous blog.
+
+These historical texts serve as a “ground truth” for identifying and labeling rationalist and empiricist language patterns, which I aim to generalize and detect in modern discourse in future phases of the project.

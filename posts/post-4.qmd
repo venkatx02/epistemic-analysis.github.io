@@ -10,16 +10,70 @@ comments:
       issue-term: title
 ---
 
-<b> Research Question </b>
+Alright, I guess it’s time for some reflection as we hit the final stretch of the project. From the beginning, my research has revolved around one big question:
 
-<b> Why do people make certain assertions? </b>
+<b>Why do people make certain assertions?</b>
 
-The research question, "Why do people make certain assertions?" aims to explore and understand how individuals, groups, or societies think about, acquire, and justify knowledge, including their beliefs about the nature of knowledge, truth, and evidence—what we’ll call "epistemic patterns." These patterns can be identified by analyzing modern digital discourse from spaces such as social media, customer reviews, or debates. For example, when someone on social media says, "Vaccines are essential because clinical trials show they work", they're using an empiricist pattern. They trust evidence and real-world observations. On the other hand, someone who says, "Freedom of speech matters because it's a natural right", follows a rationalist pattern. They rely on logical reasoning and principles they believe are naturally true. By studying these patterns, we can better understand how people reason, what influences their beliefs, and how they persuade others.
+At its core, this project is about understanding epistemic patterns. The real curiosity is: how do we know what we know? I’ve approached this by focusing on two major philosophical orientations: empiricism (relying on sensory experience and evidence) and rationalism (relying on reason and innate ideas). The hypothesis is that people’s reasoning styles show up in linguistic patterns, and with the right tools, we can detect and measure them.
 
-The initial goal of this project is to build a reliable classifier that can identify the proportions of rationalism and empiricism in modern texts. Inspired by the Philosophy Data project (<https://philosophydata.com/>), which focuses broadly on identifying philosophical tendencies, this project is specifically interested in detecting epistemic tendencies and knowledge patterns. To achieve this, we'll use transformer-based language models like BERT and RoBERTa. We might also experiment with GPT models, although they're not primarily designed for classification tasks. These models are pre-trained on large-scale text data, and we'll further fine-tune them on carefully annotated examples of rationalist and empiricist language to improve their accuracy and performance for our specific classification task.
+To explore this question, an initial corpus has been compiled using texts that explicitly discuss rationalism and empiricism. As a starting point, I’m using the corpus from the Philosophy Data Project (credits: https://philosophydata.com/bibliography.html), which includes works by key rationalist and empiricist philosophers. These texts are freely accessible through Project Gutenberg. Thanks to both Philosophy Data Project and Project Gutenberg for making my life easier :)
 
-To explore this research question, an initial corpus has been compiled using texts that explicitly discuss rationalism and empiricism. As a starting point, I’m using the corpus from the Philosophy Data Project (credits: <https://philosophydata.com/bibliography.html>), which includes works by key rationalist and empiricist philosophers. These texts are freely accessible through Project Gutenberg. Thanks to both Philosophy Data Project and Project Gutenberg for making my life easier :)
+The book titles can be found in the previous blog posts.
 
-The book titles can be found in the previous blog.
+These historical texts serve as a “ground truth” for identifying and labeling rationalist and empiricist language patterns, which I aim to generalize and detect in modern discourse.
 
-These historical texts serve as a “ground truth” for identifying and labeling rationalist and empiricist language patterns, which I aim to generalize and detect in modern discourse in future phases of the project.
+### Recap: previously on this project
+
+In the previous blog posts, I explored the corpus using word frequencies, bigrams/trigrams, readability metrics, and document clustering. These analyses gave me early signs that linguistic distinctions between the two camps exist, but they aren’t always binary. The Wordfish model further supported this by showing that rationalist and empiricist texts tend to fall along a spectrum rather than fitting into fixed categories.
+
+##### Findings:
+
+A few takeaways have been especially compelling:
+
+1) Distinct vocabularies: Words like “experience”, “sense”, and “object” dominate empiricist texts, while “reason”, “truth”, and “god” show up frequently in rationalist ones.
+
+2) Shared concepts: Terms like “idea” and “mind” appear across both traditions but in potentially different contexts.
+
+3) Spectrum over binary: Both clustering and Wordfish support the view that epistemic patterns aren’t just on/off labels but they exist on a spectrum or in varying proportions.
+
+### Traditional Machine Learning Approach
+
+After those earlier findings, I moved on to training some basic supervised classifiers. To make that work, I needed more data, so I chopped up the books into smaller chunks, about three paragraphs each. That gave me a lot more samples to work with, and it also made sense because social media posts and online content aren’t nearly as long as full books. Chunking the texts felt like a good middle ground. Once chunked, the dataset looked something like this:
+
+<img src="../images/chunk-df.png" alt="chunk-df" width="600" style="display: block; margin: auto;"/>
+
+<img src="../images/chunk-df-info.png" alt="chunk-df-info" width="500" style="display: block; margin: auto;"/>
+
+In total, I ended up with 2,692 chunks: 1,530 from empiricist texts and 1,162 from rationalist ones. The average chunk is around 372 words, which I think hits a nice balance: enough context to carry meaning, but not too long to be unrealistic for the kind of discourse I eventually want to analyze.
+
+I ran three basic classifiers: Naive Bayes, SVM, and Random Forest, on two different test sets. The results? Honestly, pretty wild.
+
+<img src="../images/supervised-test-20.png" alt="supervised-test-20" width="600" style="display: block; margin: auto;"/>
+
+<img src="../images/supervised-test-30.png" alt="supervised-test-30" width="600" style="display: block; margin: auto;"/>
+
+The images above show the performance metrics of the three models when the test sample sizes were 20% and 30%, respectively. With a 20% test size, SVM hit 99.3% accuracy and an F1 score of 0.9924. At 30%, things got even more extreme. SVM reached 99.75% accuracy with an F1 score of 0.9975.
+
+The performance has been suspiciously high, and I’m about 99% sure there’s some overfitting going on, just like we suspected. The training data probably isn’t diverse enough. These models might work great on classical philosophical texts, but I doubt they will perform the same when applied to modern, everyday language.
+
+### Further plans:
+
+I’m heading into the final phase with three priorities:
+
+1) Evaluate the classifiers on modern discourse (social media posts). One idea is to use these classifiers on the Mass-market Manifesto corpus (credits to Prof. Justin Gross) and see if there is a significant epistemological distinction between left vs right authors.
+
+2) Expand the dataset cautiously, by adding articles from PhilPapers.
+
+3) Explore the transformer-based models for more efficient and nuanced classification.
+
+Update: I heard back from the PhilPapers team. Unfortunately, they don’t have an API or any automated way to download multiple articles at once. So if I want to test on their annotated texts or include them in my training data, I’ll have to download each article manually. Not ideal, but it is what it is.
+
+### Challenges:
+
+There are still a few concerns on my radar:
+
+How will these classifiers perform in real-world discourse where language is messier and more ambiguous?
+
+How should I evaluate proportion-based predictions?
+
+Manual data expansion is slow, and without an automated way to collect PhilPapers articles, scaling this research is a challenge.
